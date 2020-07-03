@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:divider="?android:attr/dividerVertical"
+    android:showDividers="middle"
+    android:dividerPadding="12dp"
+    android:baselineAligned="false">
+
+    <FrameLayout
+        android:id="@+id/actionbar_discard"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp">
+        <TextView
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:id="@+id/actionbar_discard_textview"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/discard"
+            style="?android:actionBarTabTextStyle" />
+    </FrameLayout>
+
+    <TextView
+        style="?android:actionBarTabStyle"
+        android:id="@+id/action_bar_image_picked"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center" />
+
+    <FrameLayout
+        android:id="@+id/actionbar_done"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView style="?android:actionBarTabTextStyle"
+            android:id="@+id/actionbar_done_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/done" />
+    </FrameLayout>
+</LinearLayout>

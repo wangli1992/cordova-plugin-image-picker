@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="cordova-plugin-image-picker"
+  version="1.0.0">
+
+	<name>ImagePicker</name>
+	 
+	<description>
+		This plugin allows selection of multiple images from the camera roll / gallery in a phonegap app
+	</description>
+	
+	<license>MIT</license>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>  
+
+	<js-module src="www/imagepicker.js" name="ImagePicker">
+		<clobbers target="plugins.imagePicker" />
+	</js-module>
+
+	<!-- ios -->
+	<platform name="ios">
+	<preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION" default=" " />
+		<config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
+			<string>$PHOTO_LIBRARY_USAGE_DESCRIPTION</string>
+		</config-file>
+		<config-file target="config.xml" parent="/*">
+			<feature name="ImagePicker">
+				<param name="ios-package" value="SOSPicker"/>
+			</feature>
+		</config-file>
+
+		<header-file src="src/ios/SOSPicker.h" />
+		<source-file src="src/ios/SOSPicker.m" />
+
+		<header-file src="src/ios/WPhoto/myPhotoCell.h" />
+		<source-file src="src/ios/WPhoto/myPhotoCell.m" />
+
+		<header-file src="src/ios/WPhoto/NavView.h" />
+		<source-file src="src/ios/WPhoto/NavView.m" />
+
+		<header-file src="src/ios/WPhoto/UIImage+fixOrientation.h" />
+		<source-file src="src/ios/WPhoto/UIImage+fixOrientation.m" />
+
+		<header-file src="src/ios/WPhoto/WPFunctionView.h" />
+		<source-file src="src/ios/WPhoto/WPFunctionView.m" />
+
+		<header-file src="src/ios/WPhoto/WPhotoViewController.h" />
+		<source-file src="src/ios/WPhoto/WPhotoViewController.m" />
+
+		<header-file src="src/ios/WPhoto/WPMacros.h" />
+
+		<resource-file src="src/ios/WPhoto/WPhotoImage/wphoto_back@2x.png" />
+		<resource-file src="src/ios/WPhoto/WPhotoImage/wphoto_select_no@2x.png" />
+		<resource-file src="src/ios/WPhoto/WPhotoImage/wphoto_select_yes@2x.png" />
+		
+	</platform>
+
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="ImagePicker">
+				<param name="android-package" value="hewz.plugin.imagepicker.ImagePicker"/>
+			</feature>
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		    <activity android:label="@string/multi_app_name" android:name="hewz.plugin.imagepicker.MultiImageChooserActivity" android:theme="@android:style/Theme.Holo.Light">
+            </activity>
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+		    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		</config-file>
+
+		<source-file src="src/android/hewz/plugin/ImagePicker/ImagePicker.java" target-dir="src/hewz/plugin/imagepicker" />
+		<source-file src="src/android/hewz/plugin/ImagePicker/FakeR.java" target-dir="src/hewz/plugin/imagepicker" />
+		
+		<source-file src="src/android/Library/src/ImageFetcher.java" target-dir="src/hewz/plugin/imagepicker"/>
+		<source-file src="src/android/Library/src/MultiImageChooserActivity.java" target-dir="src/hewz/plugin/imagepicker"/>
+		
+        <source-file src="src/android/Library/res/anim/image_pop_in.xml" target-dir="res/anim"/>
+		<source-file src="src/android/Library/res/drawable/grid_background.xml" target-dir="res/drawable"/>
+		<source-file src="src/android/Library/res/drawable-hdpi/image_bg.9.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/Library/res/drawable-hdpi/loading_icon.png" target-dir="res/drawable-hdpi"/>
+		
+		<source-file src="src/android/Library/res/layout/actionbar_image_picker.xml" target-dir="res/layout"/>
+		<source-file src="src/android/Library/res/layout/multiselectorgrid.xml" target-dir="res/layout"/>
+		<source-file src="src/android/Library/res/values/multiimagechooser_strings_en.xml" target-dir="res/values"/>
+		<source-file src="src/android/Library/res/values/themes.xml" target-dir="res/values"/>
+		
+		<source-file src="src/android/Library/res/values-zh-rCN/multiimagechooser_strings_cn.xml" target-dir="res/values-zh-rCN"/>
+	</platform>
+</plugin>
