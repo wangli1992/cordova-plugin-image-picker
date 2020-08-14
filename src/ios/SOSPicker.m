@@ -50,6 +50,7 @@
                 } else {
                     NSString *encodedImageString = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
                     NSString *myStr = [NSString stringWithFormat:@"data:image/jpeg;base64,%@",encodedImageString];
+                    
                     [photos addObject:myStr];
                    // [photos addObject:[[NSURL fileURLWithPath:filePath] absoluteString]];
                 }
